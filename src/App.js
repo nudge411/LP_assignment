@@ -1,6 +1,6 @@
 import React from 'react';
 import response from "./data.json"
-import { ImageTap, ProductDetail, ProductList, SelectOptions, BottomDetail } from './components/index'
+import { ProductDetail, ProductList, SelectOptions, BottomDetail } from './components/index'
 import ImageTapContainer from './containers/ImageTapContainer';
 
 import styles from './App.scss'
@@ -9,7 +9,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 function App() {
-  const { partner, images } = response
+  const { partner, images, name, price, discount_price, discount_rate } = response;
   console.log(response)
   return (
     <div className="main">
@@ -18,7 +18,7 @@ function App() {
           <ImageTapContainer subImages={images}/> 
         </div>
         <div className="right">
-          right
+          <ProductDetail name={name} price={price} discount_price={discount_price} discount_rate={discount_rate} />
         </div>        
       </div>
       <div>
