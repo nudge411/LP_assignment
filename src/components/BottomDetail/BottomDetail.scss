@@ -1,0 +1,32 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  padding:10px 20px;
+  border-top:1px solid #d9d9d9;
+  font-size:12px;
+  background-color:#f1f1f1;
+  text-align: left;
+  color:#888;
+
+  > div {
+    margin-bottom: 10px;
+  }
+
+  .productInfo {
+    width: 760px;
+  }
+
+  .partnerInfo {
+    width: 800px;
+  }
+
+  .infoKey {
+    padding-right: 10px;
+  }
+  .infoValue {
+    font-weight: bold;
+    padding-right: 20px;
+  }
+}
