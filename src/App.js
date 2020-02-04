@@ -1,15 +1,29 @@
 import React from 'react';
-import CounterContainer from './containers/CounterContainer';
-import TodosContainer from './containers/TodosContainer';
 import response from "./data.json"
 import { ImageTap, ProductDetail, ProductList, SelectOptions, BottomDetail } from './components/index'
+import ImageTapContainer from './containers/ImageTapContainer';
+
+import styles from './App.scss'
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 function App() {
   const { partner, images } = response
+  console.log(response)
   return (
-    <div>
-      <ImageTap images={images}/> 
-      <BottomDetail productInfo={partner.product_info} partnerInfo={partner.partner_info}/>
+    <div className="main">
+      <div className="body">
+        <div className="left">
+          <ImageTapContainer subImages={images}/> 
+        </div>
+        <div className="right">
+          right
+        </div>        
+      </div>
+      <div>
+        <BottomDetail productInfo={partner.product_info} partnerInfo={partner.partner_info}/>
+      </div>
       {/* <ImageTap /> 
       <ProductDetail />
       <SelectOptions />

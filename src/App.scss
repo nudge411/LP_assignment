@@ -1,0 +1,14 @@
+.body {
+  margin-top: 50px;
+  display: flex;
+  
+  .left {
+    width: 50%;
+    margin-left: 100px;
+  }
+
+  .right {
+    width: 50%;
+    margin-right: 100px;
+  }
+}
