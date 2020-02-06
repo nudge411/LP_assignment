@@ -1,0 +1,31 @@
+.select-container {
+  display: flex;
+  flex-direction: column;
+
+  .select-options{
+    border: 1px solid #e6eaed;
+    width: 70%;
+    height: 32px;
+    font-size: 13px;
+    padding-left: 12px;
+    margin-bottom: -1p;
+    outline: 0;
+    
+    font-family: inherit;
+    // background: url('arrow.jpg') no-repeat 95% 50%;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  .select-arrow {
+    position: relative;
+    left: 65%;
+    transform: translate(-100%, -150%);
+    width: 0px;
+    height: 0px;
+    border: 6px solid transparent;
+    border-color: #c7cdd4 transparent transparent transparent;
+  }
+}

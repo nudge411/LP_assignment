@@ -1,6 +1,11 @@
 .body {
   margin-top: 50px;
   display: flex;
+  // background-color: gold;
+
+  // @media only screen and (max-width:480px) {
+  //   background-color: blue
+  // } 
   
   .left {
     width: 50%;
@@ -11,4 +16,11 @@
     width: 50%;
     margin-right: 100px;
   }
+
+  .option-txt{
+    margin-top: 2em;
+    font-size: 14px;
+    color: #495057;
+  }
 }
+

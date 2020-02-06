@@ -1,12 +1,14 @@
 import React from 'react'
-import ImageTap from '../components/ImageTap/ImageTap'
+import ImageTap from '../components/ImageTap'
 import { useSelector, useDispatch } from "react-redux"
 import { changeImage } from '../modules/imageTap';
 
 function ImageTapContainer({ subImages }) {
   const { image } =  useSelector(state => state.imageTap)
   const dispatch = useDispatch()
-  const onChangeImage = url => dispatch(changeImage(url))
+  const onChangeImage = url => {
+    return dispatch(changeImage(url))
+  }
 
   return <ImageTap 
     image={image}
