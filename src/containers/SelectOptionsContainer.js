@@ -1,22 +1,20 @@
 import React, { useCallback } from 'react'
 import SelectOptions from '../components/SelectOptions'
 import { useSelector, useDispatch } from "react-redux"
-import { choiceOption, resetOption, addItem } from '../modules/selectOptions';
+import { choiceOption, addItem } from '../modules/selectOptions';
 
 function SelectOptionsContainer({ options }) {
   const { selectBoxs } =  useSelector(state => {
-    console.log(state.selectOptions)
     return state.selectOptions
   })
   const dispatch = useDispatch()
-  
   const onChange = (id, name) => (dispatch(choiceOption(id, name)))
-  const onResetValue = () => (dispatch(resetOption()))
-  const onAddItem = item => (dispatch(addItem(item)))
+  const onAddItem = (title, price) => (dispatch(addItem(title, price)))
 
   if(!!(selectBoxs[selectBoxs.length - 1].text && selectBoxs[selectBoxs.length - 1].done)) {
-    onResetValue()
-    onAddItem('test')
+    let title = `${selectBoxs[0].text}/${selectBoxs[1].text}/${selectBoxs[2].text}`
+    let addPrice = options.data.find(ele => ele.positions.join('/') === title).data.option_price + 500000
+    onAddItem(title, addPrice)
   }
 
   return (

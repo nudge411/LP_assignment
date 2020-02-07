@@ -32,18 +32,18 @@ function OptionsList({ name, content, selectBox, onChange }) {
 function SelectOptions({ options, selectBoxs, onChange }) {
   const { names, contents } = options;
   return (
-    <div className={cx('select-container')}>
-      {
-        contents.map((content, index) => 
-          <OptionsList
-            key={index}
-            name={names[index]}
-            selectBox={selectBoxs[index]}
-            content={content}
-            onChange={onChange}
-          />
-        )
-      }
+      <div className={cx('select-container')}>
+        {
+          contents.map((content, index) => 
+            <OptionsList
+              key={index}
+              name={names[index]}
+              selectBox={selectBoxs[index]}
+              content={content}
+              onChange={onChange}
+            />
+          )
+        }
     </div>
   )
 }

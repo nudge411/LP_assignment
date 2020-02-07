@@ -1,20 +1,21 @@
 const CHOICE_OPTION = 'selectOptions/CHOICE_OPTION';
-const RESET_OPTION = 'selectOptions/RESET_OPTION';
 const ADD_ITEM = 'selectOptions/ADD_ITEM';
+const INCREASE = 'selectOptions/INCREASE'
+const DECREASE = 'selectOptions/DECREASE'
 
 let nextId = 1;
 
+export const increase = id => ({type: INCREASE, id});
+export const decrease = id => ({type: DECREASE, id});
 export const choiceOption = (id, name) => ({ type: CHOICE_OPTION, id, name })
-export const resetOption = (id, name) => ({ type: RESET_OPTION, id, name })
-export const addItem = (item) => ({
+export const addItem = (title, addPrice) => ({
   type: ADD_ITEM,
   selectedItem: {
-    id: nextId++,
-    item: {    
-      option: item,
-      count: 1,
-      price: 50000,
-    }
+    id: nextId++,   
+    title,
+    count: 1,
+    addPrice,
+    totalPrice: addPrice
   }
 })
 
@@ -39,7 +40,7 @@ const initialState = {
       done: false
     }
   ],
-  selectList: []
+  selectList: [],
 }
 
 export default function selectOptions(state = initialState, action) {
@@ -55,7 +56,7 @@ export default function selectOptions(state = initialState, action) {
             ...box,
             done: true
           } : box
-          )
+        )
       }
     case ADD_ITEM:
       return {
@@ -67,7 +68,29 @@ export default function selectOptions(state = initialState, action) {
             done: false
           } : box
         ),
-        selectList: state.selectList.concat(action.selectedItem)
+        selectList: state.selectList.concat(action.selectedItem),
+      }
+    case INCREASE:
+      return {
+        ...state,
+        selectList: state.selectList.map(product => 
+          product.id === action.id ? {
+            ...product,
+            count: product.count + 1,
+            totalPrice: product.addPrice * (product.count+1)
+          } : product
+        ),
+      }
+    case DECREASE:
+      return {
+        ...state,
+        selectList: state.selectList.map(product => 
+          product.id === action.id ? {
+            ...product,
+            count: product.count - 1,
+            totalPrice: product.addPrice * (product.count-1)
+          } : product
+        )
       }
     default:
       return state;

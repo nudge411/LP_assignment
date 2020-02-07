@@ -3,6 +3,7 @@ import response from "./data.json"
 import { ProductDetail, ProductList, SelectOptions, BottomDetail } from './components/index'
 import ImageTapContainer from './containers/ImageTapContainer';
 import SelectOptionsContainer from './containers/SelectOptionsContainer'
+import ProductListContainer from './containers/ProductListContainer'
 
 import styles from './App.scss'
 import classNames from 'classnames/bind';
@@ -26,15 +27,12 @@ function App() {
           />
           <p className={cx('option-txt')}>옵션선택</p>
           <SelectOptionsContainer options={options} />
+          <ProductListContainer />
         </div>
       </div>
       <div>
         <BottomDetail productInfo={partner.product_info} partnerInfo={partner.partner_info}/>
       </div>
-      {/* <ImageTap /> 
-      <ProductDetail />
-      <SelectOptions />
-      <ProductList /> */}
     </div>
   );
 }
