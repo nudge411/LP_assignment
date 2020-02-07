@@ -1,5 +1,6 @@
 const CHOICE_OPTION = 'selectOptions/CHOICE_OPTION';
 const ADD_ITEM = 'selectOptions/ADD_ITEM';
+const DELETE_ITEM = 'selectOptions/DELET_ITEM';
 const INCREASE = 'selectOptions/INCREASE'
 const DECREASE = 'selectOptions/DECREASE'
 
@@ -7,6 +8,7 @@ let nextId = 1;
 
 export const increase = id => ({type: INCREASE, id});
 export const decrease = id => ({type: DECREASE, id});
+export const deleteItem = id => ({type: DELETE_ITEM, id});
 export const choiceOption = (id, name) => ({ type: CHOICE_OPTION, id, name })
 export const addItem = (title, addPrice) => ({
   type: ADD_ITEM,
@@ -91,6 +93,11 @@ export default function selectOptions(state = initialState, action) {
             totalPrice: product.addPrice * (product.count-1)
           } : product
         )
+      }
+    case DELETE_ITEM:
+      return {
+        ...state,
+        selectList: state.selectList.filter(product => product.id !== action.id)
       }
     default:
       return state;

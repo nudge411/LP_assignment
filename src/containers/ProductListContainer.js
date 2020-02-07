@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductList from '../components/ProductList'
 import { useSelector, useDispatch } from "react-redux"
-import { increase, decrease } from '../modules/selectOptions';
+import { increase, decrease, deleteItem } from '../modules/selectOptions';
 
 function ProductListContainer() {
   const { selectList } =  useSelector(state => state.selectOptions);
@@ -9,6 +9,7 @@ function ProductListContainer() {
 
   const onIncrease = (id) => dispatch(increase(id))
   const onDecrease = (id) => dispatch(decrease(id))
+  const onRemove = (id) => dispatch(deleteItem(id))
   const totalPrice = !!selectList.length ? (
     selectList.map(product => product.totalPrice).reduce((pre, cur)=> (pre + cur))
    ) : 0
@@ -20,7 +21,7 @@ function ProductListContainer() {
     totalPrice= {totalPrice}
     onIncrease={onIncrease}
     onDecrease={onDecrease}
-    // onRemove={onRemove}
+    onRemove={onRemove}
   />;
 }
 

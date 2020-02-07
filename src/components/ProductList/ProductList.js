@@ -8,14 +8,14 @@ function numberFormat(inputNumber) {
   return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function ProductItem({ product, onIncrease, onDecrease }) {
+function ProductItem({ product, onIncrease, onDecrease, onRemove }) {
   const { id, title, count, totalPrice } = product;
   return (
     <>
       <div className={cx('itemDetail__countWithOption')}>
         <div className={cx("itemDetail__optionContainer")}>
           <div className={cx("itemDetail__option--selected")}>{title}</div>
-          <div className={cx("itemDetail__icon--cancel")}>X</div>
+          <div className={cx("itemDetail__icon--cancel")} onClick={() => onRemove(id)}>X</div>
         </div>
         <hr />
         <div className={cx("itemDetail__optionContainer")}>
@@ -36,12 +36,12 @@ function TotalPrice({ totalPrice }) {
   return (
     <div className={cx("totalPrice__container")}>
       <div className={cx("totalPrice__txt")}>총 상품금액</div>
-      <div className={cx("totalPrice__price")}>{numberFormat(totalPrice)}</div>
+      <div className={cx("totalPrice__price")}>{numberFormat(totalPrice)}원</div>
     </div>
   )
 }
 
-function ProductList({ selectList, totalPrice, onIncrease, onDecrease }) {
+function ProductList({ selectList, totalPrice, onIncrease, onDecrease, onRemove }) {
   return (
     <div className={cx('itemDetail__container')}>
       <hr />
@@ -51,6 +51,7 @@ function ProductList({ selectList, totalPrice, onIncrease, onDecrease }) {
           product={product}
           onIncrease={onIncrease}
           onDecrease={onDecrease}
+          onRemove={onRemove}
         />
       )}
       <TotalPrice totalPrice={totalPrice} />
